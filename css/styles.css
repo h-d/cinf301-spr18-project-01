@@ -1,0 +1,27 @@
+
+div.wrap {
+    width:1000px;
+    margin:0px auto;
+}
+
+body
+{
+    background-color: darkgray;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 80%;
+    margin: 200px auto;
+}
+
+td, th {
+    border: 1px solid black;
+    text-align: center;
+    padding: 30px;
+}
+
+tr {
+    background-color: white;
+}

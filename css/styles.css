@@ -2,7 +2,11 @@
 div.wrap {
     width:1000px;
     margin:0px auto;
+
+    align-content: center;
+    text-align: center;
 }
+
 
 body
 {
@@ -12,16 +16,23 @@ body
 table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
-    width: 80%;
-    margin: 200px auto;
+    margin: 0px auto;
+    width: 450px;
 }
 
 td, th {
     border: 1px solid black;
+    height: 100px;
+    width: 150px;
     text-align: center;
-    padding: 30px;
 }
 
 tr {
     background-color: white;
+    width: 150px;
 }
+
+td:hover {
+    background-color: #f5f5f5;
+}
+

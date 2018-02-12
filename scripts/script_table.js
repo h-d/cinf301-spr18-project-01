@@ -146,14 +146,16 @@ function check_win() {
     let numRows = table.rows.length; // gets num rows
     let numCols = table.rows[0].cells.length; //gets num cols assuming each row has the same # of cols
 
-    let num = 1;
+    let num = 0;
+
+    let win_state = ["1", "2", "3", "8", "", "4", "7", "6", "5"];
 
     for(let i = 0; i < numRows; i ++) {
         for (let j = 0; j < numCols; j++) {
-            if (num > 8) {
+            if (num > 7) {
                 update_status("WIN!");
                 return;
-            } else if (table.rows[i].cells[j].innerHTML != num.toString())
+            } else if (table.rows[i].cells[j].innerHTML != win_state[num])
             {
                 update_status("");
                 return;

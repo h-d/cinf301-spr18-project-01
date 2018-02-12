@@ -18,6 +18,7 @@ window.onload = function() {
         switch_elems(rowIndex, columnIndex);
     })
 
+
     button.addEventListener('click', (event)=> {
         randomize_elems();
     })

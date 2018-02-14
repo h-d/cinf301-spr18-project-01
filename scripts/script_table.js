@@ -2,13 +2,22 @@
  * See https://stackoverflow.com/questions/45656949/how-to-return-the-row-and-column-index-of-a-table-cell-by-clicking
  * which includes a Jquery solution too.
  */
+
+//Handles all tile puzzle functionality
+//Hudson DeVoe
+
 window.onload = function() {
+
+    //Create consts for HTML elements
+
     const table = document.querySelector('table');
     const rows = document.querySelectorAll('tr');
     const button = document.querySelector('button');
     const rowsArray = Array.from(rows);
 
     //randomize_elems();
+
+    //Event listeners for tiles
 
     table.addEventListener('click', (event) => {
         const rowIndex = rowsArray.findIndex(row => row.contains(event.target));
@@ -19,10 +28,13 @@ window.onload = function() {
     })
 
 
+    //Event listener for randomize button
     button.addEventListener('click', (event)=> {
         randomize_elems();
     })
 }
+
+//Switches element of coords (i,j) with empty tile (if possible)
 
 function switch_elems(i, j) {
     const table = document.querySelector('table');
@@ -31,6 +43,8 @@ function switch_elems(i, j) {
     let numCols = table.rows[0].cells.length; //gets num cols assuming each row has the same # of cols
 
     let rowPos = i +1;
+
+    //if statements to check if empty tile exists adjacent to (i,j)
 
     if (rowPos <= numRows - 1) {
         if (table.rows[rowPos].cells[j].innerHTML == "") {
@@ -70,9 +84,14 @@ function switch_elems(i, j) {
         }
     }
 
+    //updates status HTML element if space not found
+
     update_status("Unable to move square.");
 
 }
+
+
+//Randomizes elements
 
 function randomize_elems() {
     const table = document.querySelector('table');
@@ -83,6 +102,9 @@ function randomize_elems() {
 
     let i = 0;
 
+
+
+    //Creates an array from 0-8, making sure that no number is repeated
     while (i < 9) {
         let temp_int = getRandomInt(0,8);
         if(checkForInt(temp_int, nums)) {
@@ -93,6 +115,8 @@ function randomize_elems() {
 
     var index = 0;
 
+
+    //Runs through the tiles and sets innerHTML to corresponding int found in random array
     for(let i = 0; i < numRows; i ++) {
         for (let j = 0; j < numCols; j++) {
             if (nums[index] == 0) {
@@ -106,6 +130,8 @@ function randomize_elems() {
     }
 }
 
+//Checks to see if int exists in given array
+
 function checkForInt(temp_int, nums)
 {
 
@@ -118,9 +144,14 @@ function checkForInt(temp_int, nums)
 
 }
 
+
+//Generates a random int
+
 function getRandomInt (min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
+
+//Swaps value of first indices (i,j) with value of (rowIndex, colIndex)
 
 function swap(i,j,rowIndex, colIndex){
 
@@ -134,11 +165,15 @@ function swap(i,j,rowIndex, colIndex){
     table.rows[rowIndex].cells[colIndex].innerHTML = val1.toString();
 }
 
+//Sets status HTML element
+
 function update_status(status) {
     const status_display = document.querySelector('p');
 
     status_display.innerText = status;
 }
+
+//Checks if game has been won (tiles are in correct position)
 
 function check_win() {
 
